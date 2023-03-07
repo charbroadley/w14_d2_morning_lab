@@ -35,16 +35,16 @@ class EmployeeRelationshipsLabApplicationTests {
 	public void createAssignment() {
 		Department hr = new Department("HR");
 		Department it = new Department("IT");
-		Employee helen = new Employee("Helen", "Smith", 1234, hr);
-		Employee sarah = new Employee("Sarah", "Brown", 1235, it);
-		Project java = new Project("Java Project", 15);
-		Assignment assignment = new Assignment (helen, java);
-		Assignment assignment2 = new Assignment(sarah, java);
 		departmentRepository.save(hr);
 		departmentRepository.save(it);
+		Employee helen = new Employee("Helen", "Smith", 1234, hr);
+		Employee sarah = new Employee("Sarah", "Brown", 1235, it);
 		employeeRepository.save(helen);
 		employeeRepository.save(sarah);
+		Project java = new Project("Java Project", 15);
 		projectRepository.save(java);
+		Assignment assignment = new Assignment (helen, java);
+		Assignment assignment2 = new Assignment(sarah, java);
 		assignmentRepository.save(assignment);
 		assignmentRepository.save(assignment2);
 

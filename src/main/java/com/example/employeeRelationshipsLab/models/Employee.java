@@ -1,5 +1,7 @@
 package com.example.employeeRelationshipsLab.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +19,7 @@ public class Employee {
     private String lastName;
     @Column(name = "employee_number")
     private int employeeNumber;
+    @JsonIgnoreProperties({"employee"})
     @OneToMany(mappedBy = "employee")
     private List<Assignment> assignments;
     @ManyToOne
@@ -30,6 +33,22 @@ public class Employee {
         this.lastName = lastName;
         this.employeeNumber = employeeNumber;
         this.assignments = new ArrayList<>();
+        this.department = department;
+    }
+
+    public List<Assignment> getAssignments() {
+        return assignments;
+    }
+
+    public void setAssignments(List<Assignment> assignments) {
+        this.assignments = assignments;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
         this.department = department;
     }
 

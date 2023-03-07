@@ -1,5 +1,7 @@
 package com.example.employeeRelationshipsLab.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,9 +11,11 @@ public class Assignment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @JsonIgnoreProperties({"assignments"})
     @ManyToOne
     @JoinColumn(name="employee_id", nullable = false)
     private Employee employee;
+    @JsonIgnoreProperties({"assignments"})
     @ManyToOne
     @JoinColumn(name ="project_id", nullable = false)
     private Project project;
